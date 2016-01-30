@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		gameObject.GetComponent<Rigidbody2D> ().freezeRotation = true;
 	}
 	
 	// Update is called once per frame
