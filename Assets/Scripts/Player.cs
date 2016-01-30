@@ -17,4 +17,8 @@ public class Player : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (movex * playerSpeed, moveY * playerSpeed));
 
 	}
+
+	void Kill() {
+		//TODO
+	}
 }
