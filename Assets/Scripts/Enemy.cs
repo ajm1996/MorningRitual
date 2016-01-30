@@ -45,7 +45,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D col) {
-		print ("proc1");
 		moving = false;
 	}
 
