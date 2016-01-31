@@ -8,7 +8,7 @@ public class GameState : MonoBehaviour {
 	State gameState;
 	GameObject announce;
 
-	public GameObject shower, sink, dresser, toaster, door;
+	public GameObject shower, sink, dresser, fridge, door;
 
 	bool started = false, ended = false;
 	public bool objectiveComplete = false;
@@ -40,7 +40,7 @@ public class GameState : MonoBehaviour {
 					gameObject.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 					GameObject.Find ("Bed").GetComponent<Renderer> ().enabled = false;
 
-					gameState = State.shower;
+					gameState = State.breakfeast;
 					started = false;
 					ended = false;
 				}
@@ -102,7 +102,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Nice!\nLet's make something to eat!";
-				toaster.SetActive (true);
+				fridge.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
