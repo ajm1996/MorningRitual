@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public int playerSpeed = 10;
-	public bool paused = false;
+	public bool paused = true;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (moveX * playerSpeed, moveY * playerSpeed));
 
 			if (moveX > 0) {
-
+				
 				if (moveY > 0) {
 					Look (new Vector3(-1, -1, 0));
 				} else if (moveY < 0) {

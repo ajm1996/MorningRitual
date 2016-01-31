@@ -50,9 +50,12 @@ public class Enemy : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.tag == "Player") {
-			col.gameObject.GetComponent<Player> ().SendMessage ("Kill");
+		if (zombie) {
+			if (col.tag == "Player") {
+				GameObject.Find("Game Over Menu").SendMessage ("Kill");
+			}
 		}
+
 	}
 
 	void OnPauseGame () {
