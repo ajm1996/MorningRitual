@@ -25,7 +25,7 @@ public class Sink : MonoBehaviour {
 			}
 		}
 		if (slide.value > 0) {
-			slide.value -= (1/20f) * Time.deltaTime;
+			slide.value -= (1/10f) * Time.deltaTime;
 		}
 	}
 
