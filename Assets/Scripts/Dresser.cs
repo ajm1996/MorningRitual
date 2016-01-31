@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Sink : MonoBehaviour {
+public class Dresser : MonoBehaviour {
 
 	Slider slide;
 	bool inRange;
