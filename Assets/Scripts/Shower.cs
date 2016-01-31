@@ -14,7 +14,7 @@ public class Shower : MonoBehaviour {
 		doOnce = 0;
 		slide = GetComponentInChildren<Slider>();
 		ShowerSlider = slide.transform.parent.gameObject;
-		announce = GameObject.Find ("Announce text").GetComponentInChildren<Announcement> ();
+		//announce = GameObject.Find ("Announce text").GetComponentInChildren<Announcement> ();
 		inRange = false;
 		ShowerSlider.SetActive (false);
 	}
@@ -27,7 +27,7 @@ public class Shower : MonoBehaviour {
 			}
 			if(slide.value == slide.maxValue){
 				if (doOnce < 1) {
-					announce.getAnnouncements ("Your balls are lathered");
+					GameObject.Find ("Player").GetComponent<GameState> ().objectiveComplete = true;
 					doOnce++;
 				}
 				ShowerSlider.SetActive (false);
