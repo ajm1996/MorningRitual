@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Shower : MonoBehaviour {
+public class Sink : MonoBehaviour {
 
 	Slider slide;
 	bool inRange;
@@ -12,19 +12,20 @@ public class Shower : MonoBehaviour {
 		gameObject.SetActive (false);
 		inRange = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (inRange) {
-			if (slide.value < slide.maxValue) {
-				slide.value += (1/10f) * Time.deltaTime;
+			if (Input.GetButtonDown ("Jump") && slide.value < slide.maxValue) {
+				slide.value += (1/30f);
 			}
 			if (slide.value >= slide.maxValue) {
 				GameObject.Find ("Player").GetComponent<GameState> ().objectiveComplete = true;
 				gameObject.SetActive (false);
-			} 
-		} else if (slide.value > 0) {
-			slide.value -= (1/10f) * Time.deltaTime;
+			}
+		}
+		if (slide.value > 0) {
+			slide.value -= (1/20f) * Time.deltaTime;
 		}
 	}
 

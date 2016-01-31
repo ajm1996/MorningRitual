@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	public int playerSpeed = 10;
 	public bool paused = true;
 
+	public Sprite groomed, dressed;
+
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<Rigidbody2D> ().freezeRotation = true;

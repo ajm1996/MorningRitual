@@ -8,6 +8,8 @@ public class GameState : MonoBehaviour {
 	State gameState;
 	GameObject announce;
 
+	public GameObject shower, sink, dresser, toaster, door;
+
 	bool started = false, ended = false;
 	public bool objectiveComplete = false;
 
@@ -49,6 +51,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Good morning!\nStart your morning off with a shower.";
+				shower.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
@@ -65,6 +68,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Well done!\nGo comb your hair and brush your teeth.";
+				sink.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
@@ -81,6 +85,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Lookin' good!\nLet's go get dressed.";
+				dresser.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
@@ -97,6 +102,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Nice!\nLet's make something to eat!";
+				toaster.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
@@ -113,6 +119,7 @@ public class GameState : MonoBehaviour {
 			if (!started) {
 				announce.GetComponent<Canvas> ().enabled = true;
 				announce.GetComponentInChildren<Text> ().text = "Delicious!\nWe're running late though, leave for work!";
+				door.SetActive (true);
 
 				StartCoroutine (HideObjective ());
 				started = true;
