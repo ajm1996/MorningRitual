@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour {
 
@@ -40,7 +41,7 @@ public class GameState : MonoBehaviour {
 					gameObject.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 					GameObject.Find ("Bed").GetComponent<Renderer> ().enabled = false;
 
-					gameState = State.leave;
+					gameState = State.shower;
 					started = false;
 					ended = false;
 				}
@@ -126,9 +127,13 @@ public class GameState : MonoBehaviour {
 			}
 
 			if (objectiveComplete) {
-				gameState = State.day;
-				started = false;
-				objectiveComplete = false;
+				if (Application.loadedLevelName == "MainHouse") {
+					SceneManager.LoadScene("SwatHouse");
+				} else if (Application.loadedLevelName == "SwatHouse") {
+					SceneManager.LoadScene("ZombieHouse");
+				} else if (Application.loadedLevelName == "ZombieHouse") {
+					//Victory?
+				}
 			}
 		}
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour {
 
@@ -29,7 +29,7 @@ public class GameOverMenu : MonoBehaviour {
 	}
 	
 	public void RestartPress() {
-		EditorSceneManager.LoadScene ("MainHouse");
+		SceneManager.LoadScene ("MainHouse");
 	}
 
 	public void MainMenuPress() {
@@ -46,7 +46,7 @@ public class GameOverMenu : MonoBehaviour {
 
 	public void YesPressed() {
 		if (butPressed == 1) {
-			EditorSceneManager.LoadScene ("MainMenu");
+			SceneManager.LoadScene ("MainMenu");
 		} else if (butPressed == 2) {
 			Application.Quit();
 		}

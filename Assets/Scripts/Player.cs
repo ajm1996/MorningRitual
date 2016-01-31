@@ -55,10 +55,6 @@ public class Player : MonoBehaviour {
 		transform.rotation = rotation;
 	}
 
-	void Kill() {
-		//TODO
-	}
-
 	void OnPauseGame () {
 		paused = true;
 	}

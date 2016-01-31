@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -35,6 +35,6 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void startLevel() {
-		EditorSceneManager.LoadScene ("MainHouse");
+		SceneManager.LoadScene ("MainHouse");
 	}
 }
