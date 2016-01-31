@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour {
 	public float moveSpeed;
 
 	private bool moving, paused;
-	private float moveX, moveY;
+	private float moveX, moveY, timeToShoot, timePassed;
 	private Vector3 target;
+
+	public GameObject bullet;
 
 	void Start () {
 		gameObject.GetComponent<Rigidbody2D> ().freezeRotation = true;
@@ -34,12 +36,32 @@ public class Enemy : MonoBehaviour {
 				moveY = 0;
 
 				if (Random.value > 0.5f)
-					moveX = Random.Range (-100.0F, 100.0F);
+					moveX = Random.Range (-100.0f, 100.0f);
 				else
-					moveY = Random.Range (-100.0F, 100.0F);
+					moveY = Random.Range (-100.0f, 100.0f);
 
 				target = new Vector2 (transform.position.x + moveX, transform.position.y + moveY);
 				moving = true;
+			}
+
+			if (swat) {
+				if (timePassed == 0) {
+					timeToShoot = Random.Range (0, 5.0f);
+					print (timeToShoot);
+				}
+				timePassed += Time.deltaTime;
+
+				if (timePassed >= timeToShoot) {
+					Transform shootPoint = transform.FindChild ("ShootPoint");
+
+					GameObject g = (GameObject) Instantiate (bullet, shootPoint.position, transform.rotation);
+
+					g.GetComponent<Rigidbody2D> ().AddForce ((transform.position - target).normalized * 10);
+					g.transform.position = new Vector3 (g.transform.position.x, g.transform.position.y, -0.1f);
+
+					timePassed = 0;
+					timeToShoot = 0;
+				}
 			}
 		}
 	}
