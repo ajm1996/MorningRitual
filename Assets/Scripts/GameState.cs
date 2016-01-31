@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GameState : MonoBehaviour {
 
-	enum State{dayOne, dayTwo, dayThree, dayFour, shower, brushing, dressing, breakfeast, leave};
+	enum State{day, shower, brushing, dressing, breakfeast, leave};
 	State gameState;
 	GameObject announce;
 
@@ -14,7 +14,7 @@ public class GameState : MonoBehaviour {
 	public bool objectiveComplete = false;
 
 	void Start () {
-		gameState = State.dayOne;
+		gameState = State.day;
 		GameObject.Find ("Day Announcement").GetComponent<Canvas> ().enabled = false;
 
 		announce = GameObject.Find ("Objective Announcement");
@@ -22,7 +22,7 @@ public class GameState : MonoBehaviour {
 	}
 
 	void Update () {
-		if (gameState == State.dayOne) {
+		if (gameState == State.day) {
 			if (!started) {
 				gameObject.GetComponent<Renderer> ().enabled = false;
 				gameObject.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
@@ -40,7 +40,7 @@ public class GameState : MonoBehaviour {
 					gameObject.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 					GameObject.Find ("Bed").GetComponent<Renderer> ().enabled = false;
 
-					gameState = State.breakfeast;
+					gameState = State.leave;
 					started = false;
 					ended = false;
 				}
@@ -126,7 +126,7 @@ public class GameState : MonoBehaviour {
 			}
 
 			if (objectiveComplete) {
-				gameState = State.leave;
+				gameState = State.day;
 				started = false;
 				objectiveComplete = false;
 			}

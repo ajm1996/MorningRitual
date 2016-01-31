@@ -4,29 +4,19 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
-	//Slider slide;
+	public GameObject countdown;
 
 	void Start () {
-		//slide = GetComponentInChildren<Slider>();
 		gameObject.SetActive (false);
-		//inRange = false;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-//		if (inRange) {
-//		}
+		countdown.SetActive (true);
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Player") {
 			GameObject.Find ("Player").GetComponent<GameState> ().objectiveComplete = true;
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D col){
-		if (col.gameObject.tag == "Player") {
-//			inRange = false;
 		}
 	}
 }
