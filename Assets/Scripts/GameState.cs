@@ -76,6 +76,7 @@ public class GameState : MonoBehaviour {
 			}
 
 			if (objectiveComplete) {
+				GameObject.Find ("Player").GetComponent<SpriteRenderer> ().sprite = GameObject.Find ("Player").GetComponent<Player> ().groomed;
 				gameState = State.dressing;
 				started = false;
 				objectiveComplete = false;
@@ -93,6 +94,7 @@ public class GameState : MonoBehaviour {
 			}
 
 			if (objectiveComplete) {
+				GameObject.Find ("Player").GetComponent<SpriteRenderer> ().sprite = GameObject.Find ("Player").GetComponent<Player> ().dressed;
 				gameState = State.breakfeast;
 				started = false;
 				objectiveComplete = false;
@@ -132,7 +134,11 @@ public class GameState : MonoBehaviour {
 				} else if (Application.loadedLevelName == "SwatHouse") {
 					SceneManager.LoadScene("ZombieHouse");
 				} else if (Application.loadedLevelName == "ZombieHouse") {
-					//Victory?
+					GameObject.Find ("Win Screen").GetComponent<Canvas> ().enabled = true;
+					Object[] objects = FindObjectsOfType (typeof(GameObject));
+					foreach (GameObject go in objects) {
+						go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+					}
 				}
 			}
 		}

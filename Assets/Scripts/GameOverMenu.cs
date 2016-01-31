@@ -29,7 +29,13 @@ public class GameOverMenu : MonoBehaviour {
 	}
 	
 	public void RestartPress() {
-		SceneManager.LoadScene ("MainHouse");
+		if (Application.loadedLevelName == "MainHouse") {
+			SceneManager.LoadScene ("MainHouse");
+		} else if (Application.loadedLevelName == "SwatHouse") {
+			SceneManager.LoadScene ("SwatHouse");
+		} else if (Application.loadedLevelName == "ZombieHouse") {
+			SceneManager.LoadScene ("ZombieHouse");
+		}
 	}
 
 	public void MainMenuPress() {
