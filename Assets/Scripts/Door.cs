@@ -4,10 +4,10 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
-	Slider slide;
+	//Slider slide;
 
 	void Start () {
-		slide = GetComponentInChildren<Slider>();
+		//slide = GetComponentInChildren<Slider>();
 		gameObject.SetActive (false);
 		//inRange = false;
 	}
