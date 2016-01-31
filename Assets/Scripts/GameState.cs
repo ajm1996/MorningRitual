@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour {
 
 	void Start () {
 		gameState = State.dayOne;
+		GameObject.Find ("Day Announcement").GetComponent<Canvas> ().enabled = false;
 	}
 
 	void Update () {
@@ -25,6 +26,7 @@ public class GameState : MonoBehaviour {
 				if (Input.GetButtonDown ("Jump")) {
 					GetComponent<AudioSource>().Stop();
 					GameObject.Find ("Blinking Canvas").SendMessage ("BlinkOpen");
+					GameObject.Find ("Day Announcement").GetComponent<Canvas> ().enabled = false;
 
 					gameObject.GetComponent<Renderer> ().enabled = true;
 					gameObject.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
@@ -37,11 +39,14 @@ public class GameState : MonoBehaviour {
 	}
 
 	IEnumerator Blinking() {
-		yield return new WaitForSeconds (1);
 		GetComponent<AudioSource>().Play();
+		yield return new WaitForSeconds (1);
 		GameObject.Find ("Blinking Canvas").SendMessage ("BlinkOpen");
 		yield return new WaitForSeconds (1);
 		GameObject.Find ("Blinking Canvas").SendMessage ("BlinkClosed");
+		yield return new WaitForSeconds (1);
+		GameObject.Find ("Day Announcement").GetComponent<Canvas>().enabled = true;
+		yield return new WaitForSeconds (0.5f);
 		endedBlink = true;
 		yield break;
 	}
