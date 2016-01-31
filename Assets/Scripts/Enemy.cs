@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 					Quaternion rotation = new Quaternion ();
 					rotation.eulerAngles = new Vector3 (0, 0, angle - 90);
 					transform.rotation = rotation;
-					gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (Vector3.up * moveSpeed, ForceMode2D.Force);
+					gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (Vector3.down * moveSpeed, ForceMode2D.Force);
 				} else {
 					moving = false;
 				}
