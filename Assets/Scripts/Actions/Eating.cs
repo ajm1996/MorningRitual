@@ -8,12 +8,11 @@ public class Eating : MonoBehaviour {
 
 	void Start () {
 		slide = GetComponentInChildren<Slider>();
-		gameObject.transform.parent.gameObject.SetActive (false);
+		gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		print (GameObject.Find ("Player").GetComponent<Rigidbody2D> ().velocity.magnitude);
 		if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 1) {
 			if (slide.value < slide.maxValue) {
 				slide.value += (1/10f) * Time.deltaTime;

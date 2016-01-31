@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -62,7 +62,7 @@ public class PauseMenu : MonoBehaviour {
 
 	public void YesPressed() {
 		if (butPressed == 1) {
-			EditorSceneManager.LoadScene ("MainMenu");
+			SceneManager.LoadScene ("MainMenu");
 		} else if (butPressed == 2) {
 			Application.Quit();
 		}
