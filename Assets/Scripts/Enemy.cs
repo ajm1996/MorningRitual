@@ -47,7 +47,6 @@ public class Enemy : MonoBehaviour {
 			if (swat) {
 				if (timePassed == 0) {
 					timeToShoot = Random.Range (0, 5.0f);
-					print (timeToShoot);
 				}
 				timePassed += Time.deltaTime;
 
