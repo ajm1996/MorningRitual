@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Shower : MonoBehaviour {
+public class Toaster : MonoBehaviour {
 
 	Slider slide;
-	GameObject ShowerSlider; 
+	GameObject ToasterSlider; 
 	Announcement announce;
 	int doOnce;
 	bool inRange;
@@ -13,31 +13,24 @@ public class Shower : MonoBehaviour {
 	void Start () {
 		doOnce = 0;
 		slide = GetComponentInChildren<Slider>();
-		ShowerSlider = slide.transform.parent.gameObject;
+		ToasterSlider = slide.transform.parent.gameObject;
 		announce = GameObject.Find ("Announce text").GetComponentInChildren<Announcement> ();
 		inRange = false;
-		ShowerSlider.SetActive (false);
+		ToasterSlider.SetActive (false);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (inRange) {
+		if(inRange){
 			if (slide.value < slide.maxValue) {
 				slide.value += .005F;
 			}
-			if (slide.value == slide.maxValue) {
+			if(slide.value == slide.maxValue){
 				if (doOnce < 1) {
-					announce.getAnnouncements ("Your balls are lathered");
+					announce.getAnnouncements ("You cooked a pancake in a toaster!");
 					doOnce++;
 				}
-				ShowerSlider.SetActive (false);
-			}
-		} else {
-			if (slide.value < slide.maxValue) {
-				if(slide.value == 0){
-				}else{
-					slide.value -= .005F;
-				}
+				ToasterSlider.SetActive (false);
 			}
 		}
 	}
@@ -45,14 +38,17 @@ public class Shower : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Player") {
 			inRange = true;
-			ShowerSlider.SetActive (true);
+			ToasterSlider.SetActive (true);
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col){
 		if (col.gameObject.tag == "Player") {
+			if (slide.value < slide.maxValue) {
+				slide.value -= .1F;
+			}
 			inRange = false;
-			ShowerSlider.SetActive (false);
+			ToasterSlider.SetActive (false);
 		}
 	}
 }
