@@ -147,6 +147,7 @@ public class GameState : MonoBehaviour {
 
 	IEnumerator Blinking() {
 		GetComponent<AudioSource>().Play();
+		GetComponent<AudioSource> ().volume = 0.3f;
 		yield return new WaitForSeconds (1);
 		GameObject.Find ("Blinking Canvas").SendMessage ("BlinkOpen");
 		yield return new WaitForSeconds (1);

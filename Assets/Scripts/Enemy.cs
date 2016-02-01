@@ -54,7 +54,6 @@ public class Enemy : MonoBehaviour {
 					Transform shootPoint = transform.FindChild ("ShootPoint");
 
 					GameObject g = (GameObject) Instantiate (bullet, shootPoint.position, transform.rotation);
-
 					g.GetComponent<Rigidbody2D> ().AddForce ((transform.position - target).normalized * 10);
 					g.transform.position = new Vector3 (g.transform.position.x, g.transform.position.y, -0.1f);
 
